@@ -7,8 +7,9 @@ https://arxiv.org/abs/2009.03300
 import random
 import re
 
-import blobfile as bf
+# import blobfile as bf
 import pandas
+import logging
 
 from . import common
 from .common import (
@@ -19,7 +20,7 @@ from .common import (
     normalize_extracted_answer,
     normalize_response,
 )
-from .types import Eval, EvalResult, SamplerBase, SingleEvalResult
+from .ctypes import Eval, EvalResult, SamplerBase, SingleEvalResult
 
 subject2category = {
     "abstract_algebra": "stem",
@@ -88,7 +89,8 @@ class MMLUEval(Eval):
             url = f"https://openaipublic.blob.core.windows.net/simple-evals/mmlu_{language}.csv"
         else:
             url = "https://openaipublic.blob.core.windows.net/simple-evals/mmlu.csv"
-        df = pandas.read_csv(bf.BlobFile(url))
+        df = pandas.read_csv(url)
+        #df = pandas.read_csv(bf.BlobFile(url))
         examples = [row.to_dict() for _, row in df.iterrows()]
         if num_examples:
             examples = random.Random(0).sample(examples, num_examples)
