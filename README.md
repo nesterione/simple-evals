@@ -1,6 +1,10 @@
 # Overview
-This repository contains a lightweight library for evaluating language models.
-We are open sourcing it so we can be transparent about the accuracy numbers we're publishing alongside our latest models.
+
+This is fork of https://github.com/openai/simple-evals refactored to be used for evaluating different small models. Mostly for Ollama or vLLM. 
+
+Read original readme here https://github.com/openai/simple-evals/blob/main/README.md
+
+
 
 ## Benchmark Results
 
